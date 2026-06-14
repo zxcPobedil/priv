@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Викторина по стандартизации и ПО</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+h1{
+    text-align:center;
+}
+
+#question{
+    font-size:22px;
+    margin:20px 0;
+}
+
+.answer{
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#e9e9e9;
+    cursor:pointer;
+    text-align:left;
+    font-size:16px;
+}
+
+.answer:hover{
+    background:#d8d8d8;
+}
+
+.correct{
+    background:#4CAF50 !important;
+    color:white;
+}
+
+.wrong{
+    background:#f44336 !important;
+    color:white;
+}
+
+#next{
+    margin-top:20px;
+    padding:10px 20px;
+    font-size:18px;
+    display:none;
+}
+
+#result{
+    text-align:center;
+    font-size:24px;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Подготовка к экзамену</h1>
+
+<div id="question"></div>
+
+<div id="answers"></div>
+
+<button id="next">Следующий вопрос</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+question:"Что такое стандартизация?",
+answers:[
+"Проверка программного обеспечения",
+"Деятельность по установлению норм и требований",
+"Регистрация авторских прав"
+],
+correct:1
+},
+
+{
+question:"Основной орган стандартизации РФ?",
+answers:[
+"Минцифры",
+"Росстандарт",
+"Роспатент"
+],
+correct:1
+},
+
+{
+question:"Что означает ГОСТ?",
+answers:[
+"Государственный стандарт",
+"Главный отраслевой стандарт",
+"Государственный технический регламент"
+],
+correct:0
+},
+
+{
+question:"Какая организация разрабатывает международные стандарты?",
+answers:[
+"ISO",
+"ФСТЭК",
+"Минцифры"
+],
+correct:0
+},
+
+{
+question:"Симплификация — это",
+answers:[
+"Сокращение разнообразия объектов",
+"Испытание продукции",
+"Сертификация продукции"
+],
+correct:0
+},
+
+{
+question:"Агрегатирование — это",
+answers:[
+"Классификация изделий",
+"Сборка из унифицированных модулей",
+"Испытание системы"
+],
+correct:1
+},
+
+{
+question:"Унификация направлена на",
+answers:[
+"Сокращение разнообразия",
+"Увеличение ассортимента",
+"Создание патентов"
+],
+correct:0
+},
+
+{
+question:"Типизация — это",
+answers:[
+"Создание типовых решений",
+"Измерение параметров",
+"Контроль качества"
+],
+correct:0
+},
+
+{
+question:"Что входит в жизненный цикл ИС?",
+answers:[
+"Только разработка",
+"Разработка, эксплуатация и сопровождение",
+"Только внедрение"
+],
+correct:1
+},
+
+{
+question:"Для чего нужно техническое задание?",
+answers:[
+"Для лицензирования",
+"Для фиксации требований к системе",
+"Для регистрации ПО"
+],
+correct:1
+},
+
+{
+question:"Что подтверждает сертификация?",
+answers:[
+"Авторство",
+"Соответствие требованиям",
+"Патентоспособность"
+],
+correct:1
+},
+
+{
+question:"Добровольная сертификация проводится",
+answers:[
+"По инициативе производителя",
+"Только государством",
+"По решению суда"
+],
+correct:0
+},
+
+{
+question:"Для чего нужны стандарты ИБ?",
+answers:[
+"Для рекламы",
+"Для установления требований безопасности",
+"Для лицензирования"
+],
+correct:1
+},
+
+{
+question:"Что такое Оранжевая книга?",
+answers:[
+"Критерии оценки безопасности компьютерных систем",
+"Справочник ГОСТов",
+"Учебник по стандартизации"
+],
+correct:0
+},
+
+{
+question:"Кто относится к стейкхолдерам?",
+answers:[
+"Только заказчик",
+"Все заинтересованные стороны",
+"Только программисты"
+],
+correct:1
+},
+
+{
+question:"Формальная спецификация использует",
+answers:[
+"Математические методы",
+"Маркетинговые исследования",
+"Бухгалтерские данные"
+],
+correct:0
+},
+
+{
+question:"Когда возникает авторское право?",
+answers:[
+"После регистрации",
+"После публикации",
+"С момента создания произведения"
+],
+correct:2
+},
+
+{
+question:"Что является объектом авторского права?",
+answers:[
+"Исходный код программы",
+"Идея программы",
+"Алгоритм без реализации"
+],
+correct:0
+},
+
+{
+question:"Какие права относятся к имущественным?",
+answers:[
+"Право авторства",
+"Право распространения произведения",
+"Право на имя"
+],
+correct:1
+},
+
+{
+question:"Что защищает промышленный образец?",
+answers:[
+"Внешний вид изделия",
+"Алгоритм",
+"Технологию"
+],
+correct:0
+},
+
+{
+question:"Что даёт патент?",
+answers:[
+"Исключительное право использования",
+"Сертификат качества",
+"Авторское свидетельство"
+],
+correct:0
+},
+
+{
+question:"Принцип территориальности означает",
+answers:[
+"Патент действует на определённой территории",
+"Патент действует везде",
+"Патент бессрочный"
+],
+correct:0
+},
+
+{
+question:"Чем защищаются программы ЭВМ в РФ?",
+answers:[
+"Авторским правом",
+"Только патентом",
+"Лицензией"
+],
+correct:0
+},
+
+{
+question:"Для чего нужен реестр отечественного ПО?",
+answers:[
+"Подтверждение российского происхождения ПО",
+"Регистрация доменов",
+"Выдача патентов"
+],
+correct:0
+},
+
+{
+question:"Технологическая документация описывает",
+answers:[
+"Процесс выполнения работ",
+"Только характеристики изделия",
+"Авторские права"
+],
+correct:0
+},
+
+{
+question:"Что относится к технической документации?",
+answers:[
+"Техническое задание",
+"Маршрутная карта",
+"Технологическая инструкция"
+],
+correct:0
+},
+
+{
+question:"Главная особенность технических документов?",
+answers:[
+"Стандартизированная структура",
+"Свободная форма",
+"Отсутствие требований"
+],
+correct:0
+},
+
+{
+question:"Для чего нужна документация на АИС?",
+answers:[
+"Для разработки и эксплуатации",
+"Только для продажи",
+"Только для сертификации"
+],
+correct:0
+},
+
+{
+question:"ЕСКД — это",
+answers:[
+"Единая система конструкторской документации",
+"Единая система компьютерных документов",
+"Единая система контроля данных"
+],
+correct:0
+},
+
+{
+question:"ЕСТД предназначена для",
+answers:[
+"Технологической документации",
+"Патентования",
+"Программирования"
+],
+correct:0
+},
+
+{
+question:"ЕСПД регулирует",
+answers:[
+"Программную документацию",
+"Измерения",
+"Сертификацию"
+],
+correct:0
+},
+
+{
+question:"ГСИ обеспечивает",
+answers:[
+"Единство измерений",
+"Регистрацию ПО",
+"Патентование"
+],
+correct:0
+},
+
+{
+question:"Что определяет лицензия?",
+answers:[
+"Условия использования ПО",
+"Архитектуру программы",
+"Алгоритм"
+],
+correct:0
+},
+
+{
+question:"Какая лицензия использует принцип Copyleft?",
+answers:[
+"GNU GPL",
+"Freeware",
+"Public Domain"
+],
+correct:0
+},
+
+{
+question:"Что такое Adware?",
+answers:[
+"Бесплатное ПО с рекламой",
+"ПО с открытым кодом",
+"Пробная версия"
+],
+correct:0
+},
+
+{
+question:"Что такое Trial?",
+answers:[
+"Пробная версия с ограничением по времени",
+"Открытое ПО",
+"Бессрочная лицензия"
+],
+correct:0
+},
+
+{
+question:"За использование пиратского ПО может наступить",
+answers:[
+"Гражданская, административная и уголовная ответственность",
+"Только административная",
+"Только гражданская"
+],
+correct:0
+},
+
+{
+question:"Что означает Copyright?",
+answers:[
+"Все права защищены",
+"Свободное использование",
+"Отказ от авторства"
+],
+correct:0
+},
+
+{
+question:"Что означает NC в Creative Commons?",
+answers:[
+"Некоммерческое использование",
+"Указание авторства",
+"Запрет изменений"
+],
+correct:0
+},
+
+{
+question:"Что означает BY в Creative Commons?",
+answers:[
+"Указание автора",
+"Запрет копирования",
+"Коммерческое использование"
+],
+correct:0
+},
+
+{
+question:"Что означает SA в Creative Commons?",
+answers:[
+"Распространять на тех же условиях",
+"Только автор может изменять",
+"Запрет распространения"
+],
+correct:0
+},
+
+{
+question:"Что означает ND в Creative Commons?",
+answers:[
+"Без производных произведений",
+"Без указания автора",
+"Без лицензии"
+],
+correct:0
+},
+
+{
+question:"Основная цель стандартизации",
+answers:[
+"Повышение качества и безопасности",
+"Увеличение налогов",
+"Создание патентов"
+],
+correct:0
+},
+
+{
+question:"Комплексная стандартизация предполагает",
+answers:[
+"Установление требований ко всем связанным объектам",
+"Только стандартизацию продукции",
+"Только стандартизацию услуг"
+],
+correct:0
+}
+
+];
+
+let current = 0;
+let score = 0;
+
+const question = document.getElementById("question");
+const answers = document.getElementById("answers");
+const next = document.getElementById("next");
+const result = document.getElementById("result");
+
+function loadQuestion(){
+
+let q = questions[current];
+
+question.textContent =
+`${current+1}. ${q.question}`;
+
+answers.innerHTML = "";
+
+q.answers.forEach((answer,index)=>{
+
+const btn = document.createElement("button");
+
+btn.className = "answer";
+btn.textContent = answer;
+
+btn.onclick = ()=>checkAnswer(index);
+
+answers.appendChild(btn);
+
+});
+
+next.style.display = "none";
+}
+
+function checkAnswer(index){
+
+const buttons =
+document.querySelectorAll(".answer");
+
+buttons.forEach(btn=>btn.disabled=true);
+
+if(index === questions[current].correct){
+
+buttons[index].classList.add("correct");
+score++;
+
+}else{
+
+buttons[index].classList.add("wrong");
+buttons[questions[current].correct]
+.classList.add("correct");
+
+}
+
+next.style.display = "inline-block";
+}
+
+next.onclick = ()=>{
+
+current++;
+
+if(current < questions.length){
+
+loadQuestion();
+
+}else{
+
+question.style.display="none";
+answers.style.display="none";
+next.style.display="none";
+
+result.innerHTML =
+`<h2>Результат: ${score} из ${questions.length}</h2>`;
+}
+
+};
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
