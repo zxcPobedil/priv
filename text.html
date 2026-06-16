@@ -3,288 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ячс</title>
+    <title>Ответы на экзамен — ИБ, Веб, PHP, Криптография</title>
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            background: #f5f7fb;
-            color: #1a2a3f;
-            line-height: 1.5;
-            padding: 2rem 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            padding: 2rem 1.8rem;
-        }
-
         h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-            border-left: 5px solid #2b6a9f;
-            padding-left: 1rem;
-        }
-
-        .sub {
-            color: #4a627a;
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.75rem;
-        }
-
-        h2 {
-            font-size: 1.7rem;
-            font-weight: 600;
-            margin: 1.8rem 0 0.8rem 0;
-            color: #0f2b44;
-            background: #eef3fc;
-            padding: 0.5rem 1rem;
-            border-radius: 16px;
-            border-left: 4px solid #2b6a9f;
-        }
-
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 1.2rem 0 0.5rem 0;
-            color: #1e4a76;
-            padding-left: 0.5rem;
-            border-left: 3px solid #7f9fbb;
-        }
-
-        .card-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .card {
-            background: #f9fafc;
-            border-radius: 20px;
-            padding: 1.2rem 1.5rem;
-            flex: 1 1 280px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e9edf2;
-            transition: 0.2s;
-        }
-
-        .card p, .card ul {
-            margin-top: 0.5rem;
-        }
-
-        .badge {
-            background: #e2eaf5;
-            color: #1e5a8a;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.2rem 0.7rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 0.6rem;
-        }
-
-        ul, ol {
-            margin: 0.6rem 0 0.6rem 1.4rem;
-        }
-
-        li {
-            margin: 0.3rem 0;
-        }
-
-        code, .std-code {
-            background: #eef2f7;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-            font-size: 0.85rem;
-            padding: 0.2rem 0.4rem;
-            border-radius: 8px;
-            color: #c7254e;
-            white-space: nowrap;
-        }
-
-        .highlight {
-            background: #fef9e3;
-            padding: 1rem 1.2rem;
-            border-left: 5px solid #f5b042;
-            border-radius: 16px;
-            margin: 1rem 0;
-        }
-
-        
-        hr {
-            margin: 2rem 0;
-            border: none;
-            height: 1px;
-            background: #e2e8f0;
-        }
-
-        footer {
-            margin-top: 2rem;
             text-align: center;
-            font-size: 0.8rem;
-            color: #5f7d9c;
-            border-top: 1px solid #e9edf2;
-            padding-top: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
         }
-
-        @media (max-width: 680px) {
-            .container {
-                padding: 1.2rem;
-            }
-            h2 {
-                font-size: 1.4rem;
-            }
+        details {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+        details:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        summary {
+            font-weight: 600;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #0056b3;
+            padding: 10px 0;
+            outline: none;
+        }
+        summary::marker {
+            color: #6c757d;
+        }
+        .answer-block {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ced4da;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        strong {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 2px solid #adb5bd;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Стандартизация, сертификация, ИС и интеллектуальное право</h1>
-    <div class="sub">Конспект по 44 темам: стандарты, документы, лицензии, авторское право, спецификации</div>
 
-<div style="margin: 20px 0;">
-    <a href="index.html" style="display: inline-block; background: #2b6a9f; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600;">← На главную (index.html)</a>
-</div>
+<h1>📚 Ответы на экзаменационные вопросы</h1>
+<p style="text-align: center; color: #6c757d;">Информационная безопасность | Веб-разработка | Криптография | Право</p>
+<hr>
 
+<!-- Вопросы 1-10: Веб и PHP -->
+<h2 style="color:#2c3e50;">🌐 Веб-технологии и PHP</h2>
 
-    <!-- 1–4: Основы, документы, принципы -->
-    <h2>1. Определение, цели и задачи стандартизации</h2>
-    <p><strong>Стандартизация</strong> — деятельность по установлению правил, характеристик и требований для многократного использования с целью упорядочения процессов, продукции и услуг.</p>
-    <p><strong>Цели:</strong> повышение качества и безопасности, совместимость и взаимозаменяемость, рациональное использование ресурсов, конкурентоспособность.</p>
-    <p><strong>Задачи:</strong> разработка стандартов, единые требования, единство измерений, устранение техбарьеров.</p>
-    <p><strong>Стандарт</strong> — документ с правилами, требованиями или характеристиками. <strong>Нормативный документ</strong> — устанавливает нормы и правила (стандарты, рекомендации и др.).</p>
-
-    <h2>2. Принципы и виды стандартизации</h2>
-    <p><strong>Принципы:</strong> добровольность, открытость разработки, учёт интересов, научность, системность, актуальность.</p>
-    <p><strong>Виды стандартизации:</strong> международная, региональная, национальная, отраслевая, корпоративная.</p>
-    <p><strong>Документы:</strong> стандарты, правила, рекомендации, ТУ, своды правил.</p>
-
-    <h2>3. Классификация стандартов</h2>
-    <p><strong>По уровню принятия:</strong> международные (ISO, IEC), региональные (EN, ГОСТ), национальные (ГОСТ Р), отраслевые, СТО.</p>
-    <p><strong>По объекту:</strong> основополагающие, на продукцию, процессы, услуги, методы контроля, термины.</p>
-
-    <h2>4. Службы стандартизации в РФ</h2>
-    <ul><li>Федеральное агентство по техническому регулированию и метрологии (Росстандарт)</li><li>Технические комитеты (ТК)</li><li>НИИ стандартизации</li><li>Службы предприятий</li><li>Функции: разработка, координация, контроль, международное сотрудничество.</li></ul>
-
-    <h2>5. Государственные стандарты и обозначения</h2>
-    <p><strong>ГОСТ Р</strong> — основной национальный стандарт РФ. Примеры: <code>ГОСТ Р 34.602–2020</code>, <code>ГОСТ Р ИСО 9001–2015</code>. Структура: тип стандарта / номер / год.</p>
-
-    <h2>6. Государственная система стандартизации (ГСС)</h2>
-    <p><strong>Задачи:</strong> организация работ, актуализация, качество, гармонизация. <strong>Функции:</strong> нормативная, организационная, информационная, координационная. <strong>Принципы:</strong> системность, комплексность, перспективность, оптимальность.</p>
-
-    <!-- 7-11 методы -->
-    <h2>7. Международные стандарты и порядок внедрения в РФ</h2>
-    <p>ISO, IEC, ITU. Этапы: проект → обсуждение → голосование → утверждение. В РФ применяются напрямую или как <code>ГОСТ Р ИСО/МЭК</code>.</p>
-
-    <div class="card-grid">
-        <div class="card"><span class="badge">8. Симплификация</span><p>Сокращение необоснованного разнообразия. Пример: уменьшение типоразмеров деталей.</p></div>
-        <div class="card"><span class="badge">9. Классификация + агрегатирование</span><p>Классификация по общим признакам; параметрическая стандартизация (ряды параметров); агрегатирование — изделия из стандартных узлов (модульные станки, ПК).</p></div>
-        <div class="card"><span class="badge">10. Унификация и типизация</span><p>Унификация: межотраслевая / отраслевая / заводская; типизация: типовые проекты, процессы, ПО.</p></div>
-        <div class="card"><span class="badge">11. Комплексная & опережающая</span><p>Комплексная — согласованные требования ко всей цепочке. Опережающая — нормы на перспективные технологии.</p></div>
+<details>
+    <summary>1. Межсайтовый скриптинг (XSS). Способы противодействия</summary>
+    <div class="answer-block">
+        <p><strong>Определение:</strong> Атака, при которой злоумышленник внедряет вредоносный скрипт (обычно JavaScript) в веб-страницу, просматриваемую другими пользователями.</p>
+        <p><strong>Виды:</strong></p>
+        <ul>
+            <li><strong>Хранимые (Stored):</strong> Код сохраняется в БД (комментарии).</li>
+            <li><strong>Отраженные (Reflected):</strong> Код передается в URL/параметре запроса.</li>
+            <li><strong>DOM-модельные:</strong> Уязвимость на стороне клиента (в JS-коде).</li>
+        </ul>
+        <p><strong>Способы защиты:</strong></p>
+        <ol>
+            <li><strong>Экранирование/Кодирование</strong> выходных данных (HTML Entities).</li>
+            <li><strong>Content Security Policy (CSP):</strong> Заголовок для ограничения источников.</li>
+            <li>Фильтрация входных данных ("белые списки").</li>
+            <li>Использование флагов <code>HttpOnly</code> и <code>Secure</code> для cookie.</li>
+        </ol>
     </div>
+</details>
 
-    <h2>12. Стандартизация в ИТ (российские и международные)</h2>
-    <p><strong>Российские:</strong> ГОСТ Р серии 34 (АСУ), ГОСТ 19 (ЕСПД), <code>ГОСТ Р ИСО/МЭК 12207</code>, <code>ГОСТ Р ИСО/МЭК 27001</code>. <strong>Международные:</strong> ISO/IEC 12207, 15288, 27000. <strong>Межотраслевые системы:</strong> ЕСКД, ЕСТД, ЕСПД, ГСИ.</p>
-
-    <h2>13. Жизненный цикл ИС (ГОСТ Р 53622-2009)</h2>
-    <p>Замысел → разработка → производство (создание) → эксплуатация → сопровождение → вывод из эксплуатации. Структура стандарта: область применения, ссылки, термины, основные положения, приложения.</p>
-
-    <h2>14–15. Техническое задание на АИС</h2>
-    <p><strong>ТЗ</strong> — основной документ, фиксирует требования. <strong>Для заказчика:</strong> контроль, приёмка. <strong>Для исполнителя:</strong> объём работ, защита. Этапы: сбор требований → анализ → формирование → согласование → утверждение. Факторы качества ПО: надежность, безопасность, удобство, масштабируемость.</p>
-
-    <h2>16–17. Сертификация и связь со стандартизацией</h2>
-    <p><strong>Сертификация</strong> — подтверждение соответствия. Цели: защита потребителей, безопасность. Этапы: заявка → проверка → испытания → выдача сертификата. <strong>Обязательная</strong> (закон), <strong>добровольная</strong> (инициатива). Стандартизация задаёт нормы, сертификация подтверждает их выполнение.</p>
-
-    <h2>18–19. Информационная безопасность и «Оранжевая книга»</h2>
-    <p><strong>Области:</strong> защита информации, криптография, управление доступом, риски. <strong>Степень доверия</strong> — уверенность в защите. <strong>TCSEC (Оранжевая книга):</strong> уровни D, C1, C2, B1-B3, A1. Современные цели: конфиденциальность, целостность, доступность.</p>
-
-    <h2>20–21. Спецификации и формальные спецификации</h2>
-    <p><strong>Спецификация</strong> — детальные требования (функциональные, нефункциональные, ограничения). Стейкхолдеры: заказчик, пользователи, разработчики. <strong>Формальная спецификация</strong> — математически точное описание (Z, VDM, B-метод) для устранения двусмысленности и формальной проверки.</p>
-
-    <hr>
-
-    <h2>22–24. Авторское право в РФ</h2>
-    <p><strong>Часть IV ГК РФ.</strong> Возникает автоматически. <strong>Объекты:</strong> программы для ЭВМ, БД, литература, музыка. <strong>Субъекты:</strong> автор, правообладатель, наследники. <strong>Личные неимущественные:</strong> право авторства, на имя, неприкосновенность. <strong>Имущественные:</strong> воспроизведение, распространение, переработка. Источники: ГК РФ, Бернская конвенция.</p>
-
-    <h2>25–27. Патентное право. Изобретение, полезная модель, промобразец</h2>
-    <ul><li><strong>Изобретение:</strong> техрешение (новизна, изобретательский уровень, промприменимость)</li><li><strong>Полезная модель:</strong> устройство (новизна + промприменимость)</li><li><strong>Промышленный образец:</strong> внешний вид (новизна, оригинальность)</li>
-    <li>Принципы: исключительные права, госрегистрация (Роспатент), срочность.</li></ul>
-
-    <h2>28. Программа и БД по законодательству РФ. Патенты на ПО</h2>
-    <p><strong>Программа для ЭВМ</strong> — объективная форма данных/команд. <strong>База данных</strong> — систематизированные материалы для поиска. Программы относятся к авторскому праву, не патентуются как «программы», но патент возможен на техническое решение с ПО.</p>
-
-    <h2>29. Реестр отечественного ПО (Минцифры)</h2>
-    <p>Цели: господдержка, закупки, подтверждение российского происхождения. Требования: права у российских лиц, отсутствие иностранного контроля.</p>
-
-    <h2>30–31. Техническая vs технологическая документация</h2>
-    <p><strong>Техническая:</strong> «что это?» (устройство, характеристики). <strong>Технологическая:</strong> «как сделать?» (процессы, инструкции). Виды: ТЗ, проект, руководство; технологические карты, маршрутные карты. Этапы: анализ, структура, разработка, согласование.</p>
-
-    <h2>32–33. Документация на АИС</h2>
-    <p>Примеры: техническое задание, схема системы, руководство пользователя. Требования: полнота, актуальность, достоверность. Функции: сопровождение, обучение, приёмка.</p>
-
-    <h2>34–37. Межотраслевые системы стандартов</h2>
-    <div class="card-grid">
-        <div class="card"><span class="badge">ЕСКД</span><p>Единая система конструкторской документации: чертежи, спецификации.</p></div>
-        <div class="card"><span class="badge">ЕСТД</span><p>Единая система технологической документации: маршрутные карты, техпроцессы.</p></div>
-        <div class="card"><span class="badge">ЕСПД</span><p>Единая система программной документации: ТЗ, описание, руководство пользователя.</p></div>
-        <div class="card"><span class="badge">ЕСТПП и ГСИ</span><p>ЕСТПП — техподготовка производства; ГСИ — единство измерений, метрология.</p></div>
+<details>
+    <summary>2. Искусственный интеллект в ИБ: проблемы развития и внедрения</summary>
+    <div class="answer-block">
+        <p><strong>Применение:</strong> Обнаружение аномалий (UEBA), анализ вредоносного ПО, автоматизация SOC (SOAR), биометрия.</p>
+        <p><strong>Проблемы:</strong></p>
+        <ul>
+            <li>Ложные срабатывания (False Positives).</li>
+            <li>Состязательные атаки (обман моделей).</li>
+            <li>Непрозрачность работы (Black Box).</li>
+            <li>Зависимость от качества датасетов.</li>
+            <li>Этические вопросы и предвзятость (Bias).</li>
+        </ul>
     </div>
+</details>
 
-    <h2>38–41. Лицензии на ПО: типы и бесплатные лицензии</h2>
-    <p><strong>Типы лицензий:</strong> коммерческие, свободные, условно-бесплатные, бесплатные. <strong>EULA</strong> (лицензионное соглашение) определяет права и ограничения.</p>
-    <div class="highlight">
-        <strong>🔓 Бесплатные лицензии:</strong><br>
-        • <strong>Freeware</strong> — бесплатно, код закрыт.<br>
-        • <strong>Open Source</strong> — открытый код, модификация.<br>
-        • <strong>GNU GPL</strong> — свободная, copyleft (производные под GPL).<br>
-        • <strong>Public Domain</strong> — отказ от авторских прав.<br>
-        • <strong>Adware/Donateware/Postcardware/Registerware/Nagware</strong> — разные модели (реклама, пожертвования, регистрация, напоминания).
+<details>
+    <summary>3. Киллчейн (Cyber Kill Chain). Общие правила построения</summary>
+    <div class="answer-block">
+        <p><strong>Этапы атаки (Lockheed Martin):</strong></p>
+        <ol>
+            <li><strong>Разведка (Reconnaissance)</strong></li>
+            <li><strong>Вооружение (Weaponization)</strong></li>
+            <li><strong>Доставка (Delivery)</strong></li>
+            <li><strong>Эксплуатация (Exploitation)</strong></li>
+            <li><strong>Установка (Installation)</strong></li>
+            <li><strong>Управление (C2)</strong></li>
+            <li><strong>Действия по цели (Actions)</strong></li>
+        </ol>
+        <p><strong>Правило:</strong> Эшелонированная защита. Прерывание цепочки на любом этапе не даёт атаке завершиться.</p>
     </div>
-    <p><strong>Условно-бесплатные:</strong> Shareware (ограничения), Trial (по времени), Demo (ограниченный функционал).</p>
+</details>
 
-    <h2>42. Ответственность за нелицензионное ПО</h2>
-    <p>Гражданско-правовая, административная, уголовная (при крупном ущербе). Типы лицензирования: OEM, Box, корпоративная, подписка.</p>
+<details>
+    <summary>4. Язык PHP: выражения, переменные, функции</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Переменные:</strong> Начинаются с <code>$</code>. Динамическая типизация. Суперглобальные массивы (<code>$_GET</code>, <code>$_POST</code>).</li>
+            <li><strong>Выражения:</strong> Фрагмент кода, имеющий значение (присваивание, арифметика).</li>
+            <li><strong>Функции:</strong>
+                <pre><code>function sum(int $a, int $b): int { 
+    return $a + $b; 
+}</code></pre>
+                Анонимные (замыкания), стрелочные <code>fn()</code>.
+            </li>
+        </ul>
+    </div>
+</details>
 
-    <h2>43. Документы на права использования ПО. Копирайт и копилефт. Двойное лицензирование</h2>
-    <p><strong>Подтверждение прав:</strong> лицензионный договор, сертификат, электронный ключ. <strong>Copyright</strong> — классическая модель, <strong>Copyleft</strong> — разрешает изменение, но требует сохранения лицензии (например, GPL). <strong>Двойное лицензирование</strong> — коммерческая + свободная лицензия.</p>
+<details>
+    <summary>5. Выражения и управление процессом выполнения в PHP</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Условия:</strong> <code>if...elseif...else</code>, <code>switch/case</code>.</li>
+            <li><strong>Циклы:</strong> <code>while</code>, <code>for</code>, <code>foreach</code>.</li>
+            <li><strong>Управление циклом:</strong> <code>break</code>, <code>continue</code>.</li>
+            <li><strong>Включения:</strong> <code>include</code>, <code>require</code>.</li>
+            <li><strong>Конструкция <code>match</code></strong> (PHP 8+): Строгий аналог switch.</li>
+        </ul>
+    </div>
+</details>
 
-    <h2>44. Лицензии Creative Commons</h2>
-    <p><strong>Элементы CC:</strong> BY (указание автора), SA (на тех же условиях), NC (некоммерческое), ND (без производных). Популярные лицензии: CC BY, CC BY-SA, CC BY-NC, CC BY-ND, CC BY-NC-SA, CC BY-NC-ND. Применение: статьи, фото, видео, образование.</p>
+<details>
+    <summary>6. Принципы проектирования дизайна веб-приложений</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>UX-принципы:</strong> Ориентация на пользователя, простота.</li>
+            <li><strong>Адаптивность:</strong> Mobile First, медиа-запросы, Flex/Grid.</li>
+            <li><strong>Доступность (A11y):</strong> ARIA-атрибуты, контрастность, семантический HTML.</li>
+            <li><strong>Методологии CSS:</strong> БЭМ (Блок-Элемент-Модификатор).</li>
+        </ul>
+    </div>
+</details>
 
-    <hr>
+<details>
+    <summary>7. Hover-эффекты и способы их реализации</summary>
+    <div class="answer-block">
+        <p><strong>Hover-эффект:</strong> Изменение стиля при наведении мыши.</p>
+        <ol>
+            <li><strong>CSS (:hover):</strong> Изменение цвета, тени, трансформации с <code>transition</code>.</li>
+            <li><strong>JavaScript:</strong> События <code>mouseenter</code> и <code>mouseleave</code>, управление классами.</li>
+            <li><strong>Библиотеки (GSAP):</strong> Для сложных анимаций.</li>
+        </ol>
+    </div>
+</details>
 
-    <h2>📌 Дополнительные тезисы (из плана)</h2>
-    <ul>
-        <li><strong>Техническая документация АИС:</strong> комплект документов для разработки, внедрения, эксплуатации.</li>
-        <li><strong>ЕСПД:</strong> ГОСТ 19.xxx — унификация документации ПО, повышение качества сопровождения.</li>
-        <li><strong>Стандартизация в области ИБ:</strong> единые критерии оценки, совместимость средств защиты.</li>
-        <li><strong>Степень гарантированности (уровень доверия):</strong> подтверждение корректности механизмов безопасности.</li>
-        <li><strong>Стандарт ISO/IEC 12207:</strong> процессы жизненного цикла ПО.</li>
-        <li><strong>Формальные методы:</strong> языки Z, VDM, B — математически строгие спецификации.</li>
-    </ul>
+<details>
+    <summary>8. Структура современных веб-приложений</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Фронтенд:</strong> SPA (React/Vue), HTML/CSS/JS.</li>
+            <li><strong>Бэкенд:</strong> API (REST/GraphQL), PHP/Node.</li>
+            <li><strong>База данных:</strong> MySQL/PostgreSQL + Redis (кэш).</li>
+            <li><strong>Инфраструктура:</strong> Облачные серверы, CDN, CI/CD.</li>
+        </ul>
+    </div>
+</details>
 
-    <footer>
-        📄 Материал охватывает вопросы стандартизации, сертификации, лицензирования ПО и защиты интеллектуальной собственности.<br>
-        Актуально для подготовки к экзаменам / зачётам по метрологии, стандартизации и правовым аспектам ИТ.
-    </footer>
-</div>
+<details>
+    <summary>9. Капча (CAPTCHA). Виды и интеграция</summary>
+    <div class="answer-block">
+        <p><strong>Виды:</strong> Текстовая, графическая, ReCAPTCHA v2 (галочка), ReCAPTCHA v3 (невидимая, оценка скор).</p>
+        <p><strong>Интеграция:</strong> Вставка JS-скрипта на фронт, проверка токена на бэкенде через API провайдера.</p>
+    </div>
+</details>
+
+<details>
+    <summary>10. AJAX-технологии для создания безопасных веб-приложений</summary>
+    <div class="answer-block">
+        <p><strong>Безопасность AJAX:</strong></p>
+        <ul>
+            <li>Всегда проверять <strong>CSRF-токены</strong> в фоновых запросах.</li>
+            <li>Использовать CORS-заголовки на сервере.</li>
+            <li>Валидировать и экранировать полученные данные.</li>
+            <li>Использовать метод <code>fetch()</code> правильно.</li>
+        </ul>
+    </div>
+</details>
+
+<hr>
+<!-- Вопросы 11-22: Управление доступом, БД, Блокчейн -->
+<h2 style="color:#2c3e50;">🔑 Управление доступом, Аудит, Блокчейн</h2>
+
+<details>
+    <summary>11. Управление доступом: определение, задачи, типы</summary>
+    <div class="answer-block">
+        <p><strong>Задачи:</strong> Конфиденциальность, Целостность, Доступность.</p>
+        <p><strong>Типы:</strong></p>
+        <ul>
+            <li><strong>DAC (Дискреционное):</strong> Владелец управляет правами.</li>
+            <li><strong>MAC (Мандатное):</strong> Система на основе меток секретности.</li>
+            <li><strong>RBAC (Ролевое):</strong> Права группируются в роли.</li>
+            <li><strong>ABAC (Атрибутное):</strong> Динамические правила (время, место).</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>12. Привилегированные роли и управление привилегированным доступом (PAM)</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Роли:</strong> Суперпользователь (root), админ СУБД, аудитор.</li>
+            <li><strong>Рекомендации:</strong> Принцип минимальных привилегий, Just-in-Time доступ, мониторинг сессий.</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>13. Идентификация, аутентификация, авторизация, верификация</summary>
+    <div class="answer-block">
+        <table>
+            <tr><th>Процесс</th><th>Вопрос</th><th>Пример</th></tr>
+            <tr><td>Идентификация</td><td>Кто ты?</td><td>Ввод логина</td></tr>
+            <tr><td>Аутентификация</td><td>Докажи!</td><td>Пароль, отпечаток пальца</td></tr>
+            <tr><td>Авторизация</td><td>Что тебе можно?</td><td>Чтение/запись файлов</td></tr>
+            <tr><td>Верификация</td><td>Подтверждение</td><td>Подтверждение email</td></tr>
+        </table>
+    </div>
+</details>
+
+<details>
+    <summary>14. Системы мониторинга и аудита действий пользователей (UAM/UBA)</summary>
+    <div class="answer-block">
+        <p><strong>Функции:</strong> Запись сессий, протоколирование, поведенческий анализ.</p>
+        <p><strong>Решения:</strong> Анализ отклонений от нормы (UEBA), блокировка подозрительной активности.</p>
+    </div>
+</details>
+
+<details>
+    <summary>15. Виды надзора за действиями пользователей: плюсы и минусы</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Полная запись (видео/клавиатура):</strong> Дорого, снижает доверие, но полная доказательная база.</li>
+            <li><strong>Логирование событий:</strong> Дешево, но нет контекста.</li>
+            <li><strong>DLP-контроль:</strong> Проактивная защита, но есть ложные срабатывания.</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>16. Этическая безопасность</summary>
+    <div class="answer-block">
+        <p>Баланс между защитой активов компании и правом сотрудника на приватную жизнь. Честное информирование о мониторинге и недопустимость чтения личной информации без оснований.</p>
+    </div>
+</details>
+
+<details>
+    <summary>17. NDA и работа с сотрудниками при мониторинге</summary>
+    <div class="answer-block">
+        <p><strong>NDA (Соглашение о неразглашении):</strong> Запрещает разглашение конфиденциальных данных (ноу-хау, код) во время и после работы.</p>
+        <p>При внедрении мониторинга обязательно уведомить сотрудника под подпись.</p>
+    </div>
+</details>
+
+<details>
+    <summary>18. Идеальная система контроля пользователей безопасных приложений</summary>
+    <div class="answer-block">
+        <p>Комбинация RBAC/ABAC, поведенческого анализа (UEBA), контекстного мониторинга и четкой нормативно-документальной базы.</p>
+    </div>
+</details>
+
+<details>
+    <summary>19. Распределённые базы данных и степени прозрачности</summary>
+    <div class="answer-block">
+        <p><strong>Степени прозрачности (скрытости от пользователя):</strong></p>
+        <ul>
+            <li>Прозрачность расположения (где лежат?).</li>
+            <li>Прозрачность фрагментации (разбивка по узлам).</li>
+            <li>Прозрачность репликации (копирование).</li>
+            <li>Прозрачность отказов.</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>20. Блокчейн: определение, функции, пример</summary>
+    <div class="answer-block">
+        <p><strong>Цепочка блоков</strong> — распределенный реестр данных, связанных хешированием.</p>
+        <p><strong>Функции:</strong> Децентрализация, неизменность, прозрачность.</p>
+        <p><strong>Пример:</strong> Bitcoin (PoW), передача средств без посредников.</p>
+    </div>
+</details>
+
+<details>
+    <summary>21. Транзакции в блокчейне. Проблемы блокчейна</summary>
+    <div class="answer-block">
+        <p><strong>Майнеры:</strong> Проверяют подписи, решают криптозадачу (PoW), получают награду.</p>
+        <p><strong>Проблемы:</strong> Низкая пропускная способность (TPS), высокие энергозатраты (PoW), необратимость ошибок, регулирование.</p>
+    </div>
+</details>
+
+<details>
+    <summary>22. Аудит баз данных. Виды и цели</summary>
+    <div class="answer-block">
+        <p><strong>Цель:</strong> Соответствие стандартам и целостность.</p>
+        <p><strong>Виды:</strong> Аудит привилегий, аудит DML/DDL операций, аудит попыток входа.</p>
+    </div>
+</details>
+
+<hr>
+<!-- Вопросы 23-30: Криптография -->
+<h2 style="color:#2c3e50;">🔒 Криптография и обфускация</h2>
+
+<details>
+    <summary>23. Шифрование. Наука и краткая история шифров</summary>
+    <div class="answer-block">
+        <p>От шифра Цезаря и "Энигмы" до современной математической криптографии (DES, AES, RSA).</p>
+    </div>
+</details>
+
+<details>
+    <summary>24. Симметричное, асимметричное шифрование, хэширование</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Симметричное:</strong> Один ключ (AES). Быстро.</li>
+            <li><strong>Асимметричное:</strong> Два ключа (RSA, ECC). Медленно, решает проблему распространения.</li>
+            <li><strong>Хэширование:</strong> Необратимое преобразование (SHA-256). Для целостности.</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>25. Алгоритм AES</summary>
+    <div class="answer-block">
+        <p><strong>Симметричный, блочный.</strong> Размер блока 128 бит. Ключи: 128, 192 или 256 бит.</p>
+        <p><strong>Применение:</strong> Wi-Fi (WPA2), HTTPS, BitLocker.</p>
+        <p><strong>Взлом:</strong> Устойчив к прямому перебору. Уязвимости в конкретных реализациях (ECB-режим).</p>
+    </div>
+</details>
+
+<details>
+    <summary>26. Алгоритм RSA</summary>
+    <div class="answer-block">
+        <p><strong>Асимметричный.</strong> Основан на факторизации чисел.</p>
+        <p><strong>Применение:</strong> Электронная подпись, TLS.</p>
+        <p><strong>Взлом:</strong> Уязвим для квантовых компьютеров (алгоритм Шора).</p>
+    </div>
+</details>
+
+<details>
+    <summary>27. Алгоритм SHA-256</summary>
+    <div class="answer-block">
+        <p><strong>Хеш-функция.</strong> Выход 256 бит.</p>
+        <p><strong>Применение:</strong> Биткойн, цифровые подписи.</p>
+        <p><strong>Взлом:</strong> Радужные таблицы (нужна "соль"), брутфорс.</p>
+    </div>
+</details>
+
+<details>
+    <summary>28. Triple DES и протокол Диффи-Хеллмана</summary>
+    <div class="answer-block">
+        <p><strong>3DES:</strong> Тройной DES. Медленный, устарел (блок 64 бит).</p>
+        <p><strong>Diffie-Hellman:</strong> Протокол обмена ключами по открытому каналу.</p>
+    </div>
+</details>
+
+<details>
+    <summary>29. Elliptic Curve Cryptography (ECC)</summary>
+    <div class="answer-block">
+        <p><strong>Асимметричное.</strong> Математика эллиптических кривых. ECC 256 бит ≈ RSA 3072 бит. Эффективен для мобильных устройств.</p>
+    </div>
+</details>
+
+<details>
+    <summary>30. Обфускация программного кода</summary>
+    <div class="answer-block">
+        <p><strong>Цель:</strong> Затруднить анализ кода человеком.</p>
+        <p><strong>Методы:</strong> Переименование переменных (a, b, c), шифрование строк, мертвый код, изменение потока управления (flattening).</p>
+    </div>
+</details>
+
+<hr>
+<!-- Вопросы 31-60: Угрозы, защита, сети, право -->
+<h2 style="color:#2c3e50;">🛡️ Угрозы ИБ, Форензика, Защита сетей и Право</h2>
+
+<details>
+    <summary>31. Триада CIA (Главные элементы ИБ)</summary>
+    <div class="answer-block">
+        <p><strong>Конфиденциальность (C), Целостность (I), Доступность (A).</strong></p>
+    </div>
+</details>
+
+<details>
+    <summary>32. APT-атаки и трояны-бэкдоры</summary>
+    <div class="answer-block">
+        <p><strong>APT:</strong> Целенаправленная скрытая долговременная атака (Обнаружение через Threat Hunting).</p>
+        <p><strong>Бэкдор:</strong> Троян для скрытого удаленного доступа.</p>
+    </div>
+</details>
+
+<details>
+    <summary>33. Ботнет и DDoS (Отказ в обслуживании)</summary>
+    <div class="answer-block">
+        <p><strong>Типы DDoS:</strong> Канальный (Volumetric), Протокольный (SYN-flood), Прикладной уровень (HTTP-flood).</p>
+    </div>
+</details>
+
+<details>
+    <summary>34. Скрытая загрузка (Drive-by), наборы эксплойтов, метаморфные вирусы</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>Drive-by:</strong> Заражение при посещении сайта.</li>
+            <li><strong>Метаморфный вирус:</strong> Полная перезапись своего кода при размножении.</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>35. Инсайдерские угрозы (Типы)</summary>
+    <div class="answer-block">
+        <p>Злонамеренный ("крот"), небрежный (нарушил политику), скомпрометированный (взлом аккаунта).</p>
+    </div>
+</details>
+
+<details>
+    <summary>36. Фишинг, MitM, Сталкинг, Replay-атаки</summary>
+    <div class="answer-block">
+        <p><strong>MitM:</strong> Перехват трафика. <strong>Replay:</strong> Повтор легитимного запроса. <strong>Stalkerware:</strong> ПО слежки.</p>
+    </div>
+</details>
+
+<details>
+    <summary>37. Шифровальщики, социотехника, кликджекинг</summary>
+    <div class="answer-block">
+        <p><strong>Дроппер:</strong> Загружает основную вредоносную нагрузку. <strong>Кликджекинг:</strong> Невидимые кнопки поверх легитимных.</p>
+    </div>
+</details>
+
+<details>
+    <summary>38. RaaS, RAT и ПНП</summary>
+    <div class="answer-block">
+        <p><strong>RaaS:</strong> Вымогатель как услуга. <strong>RAT:</strong> Троян удаленного доступа. <strong>ПНП:</strong> Потенциально нежелательное ПО (спам-тулбары).</p>
+    </div>
+</details>
+
+<details>
+    <summary>39. Защита от потери данных (DLP). Компоненты</summary>
+    <div class="answer-block">
+        <p>Агенты на ПК, межсетевые шлюзы, контроль контента (регулярные выражения), блокировка USB и облаков.</p>
+    </div>
+</details>
+
+<details>
+    <summary>40. Обнаружение атак на конечные точки (EDR)</summary>
+    <div class="answer-block">
+        <p>Эволюция антивируса. Мониторинг в реальном времени, поиск IoCs, изоляция хоста.</p>
+    </div>
+</details>
+
+<details>
+    <summary>41. DevSecOps. Ключевые компоненты</summary>
+    <div class="answer-block">
+        <p>Интеграция безопасности на всех этапах CI/CD (SAST, DAST, сканирование зависимостей).</p>
+    </div>
+</details>
+
+<details>
+    <summary>42. Аналитика поведения (UEBA). Три столпа</summary>
+    <div class="answer-block">
+        <p>Сценарии использования (Use Cases) + Источники данных + ML-Аналитика для построения базовой линии поведения (Baseline).</p>
+    </div>
+</details>
+
+<details>
+    <summary>43. Модель нулевого доверия (Zero Trust)</summary>
+    <div class="answer-block">
+        <p><strong>Принцип:</strong> Никогда не доверяй, всегда проверяй. Микросегментация и MFA обязательны.</p>
+    </div>
+</details>
+
+<details>
+    <summary>44-47. Компьютерная криминалистика (Форензика)</summary>
+    <div class="answer-block">
+        <p><strong>Процедуры:</strong> Создание образа -> Хеширование -> Анализ -> Протокол.</p>
+        <p><strong>ОС для форензики:</strong> Kali Linux, Parrot, Caine.</p>
+        <p><strong>Техники:</strong> Таймлайн-анализ, восстановление данных, поиск стеганографии.</p>
+    </div>
+</details>
+
+<details>
+    <summary>48. Защита баз данных</summary>
+    <div class="answer-block">
+        <p>Шифрование (TDE), контроль доступа, аудит, защита от SQL-инъекций (WAF).</p>
+    </div>
+</details>
+
+<details>
+    <summary>49-51. Конфиденциальная информация и Персональные данные (152-ФЗ)</summary>
+    <div class="answer-block">
+        <p><strong>Персональные данные (ПДн):</strong> Любая информация о физ. лице.</p>
+        <p><strong>152-ФЗ:</strong> Согласие на обработку, локализация баз данных РФ. Ответственность: административная и уголовная.</p>
+    </div>
+</details>
+
+<details>
+    <summary>52-53. Безопасность облачных сред</summary>
+    <div class="answer-block">
+        <p><strong>Модели:</strong> IaaS, PaaS, SaaS.</p>
+        <p><strong>Угрозы:</strong> Неверные настройки (S3 bucket открыт).</p>
+        <p><strong>Инструменты:</strong> CASB, CSPM, CWPP.</p>
+    </div>
+</details>
+
+<details>
+    <summary>54-55. Аппаратные и автоматизированные системы защиты БД</summary>
+    <div class="answer-block">
+        <p><strong>Примеры:</strong> HSM (хранение ключей), SIEM-системы, резервное копирование.</p>
+    </div>
+</details>
+
+<details>
+    <summary>56-58. Протоколы защиты и VPN</summary>
+    <div class="answer-block">
+        <p><strong>VPN (Виртуальная частная сеть):</strong> Шифрует канал связи.</p>
+        <p><strong>Протоколы:</strong> OpenVPN (гибкий), WireGuard (современный), IPsec. <strong>PPTP:</strong> устарел.</p>
+        <p><strong>Hysteria/VLESS:</strong> Протоколы с улучшенной маскировкой и скоростью на нестабильных сетях.</p>
+    </div>
+</details>
+
+<details>
+    <summary>59. Прокси-сервера и их виды</summary>
+    <div class="answer-block">
+        <ul>
+            <li><strong>HTTP/HTTPS:</strong> Для веба.</li>
+            <li><strong>SOCKS5:</strong> Более низкий уровень (TCP/UDP).</li>
+            <li><strong>Reverse Proxy:</strong> Стоит перед сервером (Cloudflare, Nginx).</li>
+        </ul>
+    </div>
+</details>
+
+<details>
+    <summary>60. Инфраструктура фильтрации трафика и DPI</summary>
+    <div class="answer-block">
+        <p><strong>DPI (Deep Packet Inspection):</strong> Глубокий анализ содержимого пакетов, а не только заголовков.</p>
+        <p><strong>Цели:</strong> Блокировка запрещенных сайтов, DDoS-защита, приоритизация трафика (QoS), выполнение требований СОРМ.</p>
+    </div>
+</details>
+
 </body>
 </html>
-```
